@@ -5,7 +5,10 @@
 
 * {
     font-family: "Manrope", sans-serif;
+    box-sizing: border-box; 
 }
+
+
 
 a.router-link-exact-active {
     color: #27A376;

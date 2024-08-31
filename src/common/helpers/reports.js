@@ -1,4 +1,5 @@
-import ROLES from "./roles";
+import { ROLES } from "./roles";
+
 
 // "Management Dashboard" sehifesinin raporlari
 const managementDashboard = [

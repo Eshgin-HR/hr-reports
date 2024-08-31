@@ -1,4 +1,5 @@
-import ROLES from "./roles";
+import { ROLES } from "./roles";
+
 
 const accounts = [
   {
