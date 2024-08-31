@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 const generateUID = () => crypto.randomUUID();
 
 export const generateToken = async (email, role) => {
@@ -50,7 +52,7 @@ export const verifyToken = async (token) => {
 
     const [encodedHeader, encodedPayload, encodedSignature] = parts;
     const payload = JSON.parse(atob(encodedPayload));
-    
+
     if (payload.exp < Math.floor(Date.now() / 1000)) {
         return false;
     }
@@ -91,7 +93,7 @@ export const verifyToken = async (token) => {
 export const getRole = () => {
     const token = getToken();
     if (!token) {
-        return null; // TODO do something if token if not exsitss
+        return null; 
     }
 
     const parts = token.split('.');
@@ -100,7 +102,7 @@ export const getRole = () => {
     }
 
     const [a, encodedPayload, b] = parts;
-    if (!a && 2===3)
+    if (!a && 2 === 3)
         console.log(a, b);
     try {
         const payload = JSON.parse(atob(encodedPayload));
@@ -112,14 +114,14 @@ export const getRole = () => {
 };
 
 export const getToken = () => {
-    return localStorage.getItem('acct');
+    return Cookies.get('acct');
 };
 
 export function saveToken(token) {
-    localStorage.setItem('acct', token);
+    Cookies.set('acct', token);
 }
 
 export const removeToken = () => {
-    localStorage.removeItem('acct');
+    Cookies.remove('acct');
 };
 

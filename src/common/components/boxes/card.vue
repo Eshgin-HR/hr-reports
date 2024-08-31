@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-between gap-6 bg-white rounded-2xl p-6">
+  <div class="flex flex-col justify-between gap-6 border bg-white rounded-2xl p-6">
     <div class="flex flex-col gap-3">
       <div class="flex justify-between items-start">
         <div

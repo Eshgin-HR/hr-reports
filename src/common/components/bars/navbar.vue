@@ -53,11 +53,15 @@
           &#x2715;
         </button>
       </div>
+      <button @click="logout" class="text-sm p-3 text-activeButton min-w-max">Logout</button>
     </div>
   </div>
 </template>
 
 <script>
+import { removeToken } from '@/services/tokenService/TokenService';
+
+
 export default {
   data() {
     return {
@@ -90,10 +94,19 @@ export default {
     clearInput() {
       this.$store.dispatch('user/updateSearchVal', '')
       this.searchVal = ""
+    },
+    async logout() {
+      try {
+        removeToken();
+        this.$router.push({ name: 'signIn' });
+      } catch (error) {
+        console.error('Logout error:', error);
+        // If the user is not authenticated, just redirect to sign in page
+        this.$router.push({ name: 'signIn' });
+      }
     }
   }
 };
 </script>
 
 <style>
-</style>

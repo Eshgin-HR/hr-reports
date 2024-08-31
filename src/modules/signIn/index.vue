@@ -108,19 +108,12 @@ export default {
         );
 
         if (user) {
-          console.log('User found:', {
-            email: user.email,
-            password: user.password,
-            role: user.role
-          });
-
           const token = await generateToken(user.email, user.role);
           saveToken(token);
           this.$router.push({ name: "allReports" });
           this.messageBoxType = "";
           this.messageBoxText = "";
         } else {
-          console.log('No user found');
           this.messageBoxType = "error";
           this.messageBoxText = "Email or password is incorrect";
         }

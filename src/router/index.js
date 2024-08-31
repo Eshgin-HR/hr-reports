@@ -2,11 +2,9 @@ import Vue from 'vue'
 import VueRouter from "vue-router";
 import { appSettings } from "@/services/appSettings/index";
 import defaultLayout from "../layouts/default.vue";
-import home from "../modules/home/home";
 import errorLayout from "../layouts/404.vue";
 import { userService } from "@/services/user/index";
 import { allReports } from '@/modules/allReports/routes';
-import { signIn } from '@/modules/signIn/routes';
 import { managementDashboard } from '@/modules/managementDashboard/routes';
 import { hrCommittee } from '@/modules/hrCommittee/routes';
 import { sbReports } from '@/modules/sbReports/routes';
@@ -14,8 +12,29 @@ import { groupWideActivities } from '@/modules/groupWideActivities/routes';
 
 Vue.use(VueRouter)
 
+const authMiddleware = async (to, from, next) => {
+  if (await userService.isAuthenticated()) {
+    if (to.name === 'signIn') {
+      next({ name: 'allReports' });
+    } else {
+      next();
+    }
+  } else {
+    if (to.name !== 'signIn') {
+      next({ name: 'signIn' });
+    } else {
+      next();
+    }
+  }
+}
+
 const routes = [
-  ...signIn,
+  {
+    path: "/sign-in",
+    name: "signIn",
+    component: () => import("@/modules/signIn/index.vue"),
+    beforeEnter: authMiddleware,
+  },
   {
     path: "",
     component: defaultLayout,
@@ -23,25 +42,23 @@ const routes = [
       {
         path: "",
         name: "home",
-        component: home,
+        component: () => import("@/modules/home/home.vue"),
         meta: {
           acceptedRoles: "ALL",
         },
-        beforeEnter: (to, from, next) => {
-          if ("ALL".includes(userService.userRole())) {
-            next({ name: "allReports" });
-            return;
+        beforeEnter: async (to, from, next) => {
+          if (await userService.isAuthenticated()) {
+            next({ name: 'allReports' });
           } else {
-            next({ name: "signIn" });
-            return;
+            next({ name: 'signIn' });
           }
         },
       },
-      ...allReports,
-      ...managementDashboard,
-      ...hrCommittee,
-      ...sbReports,
-      ...groupWideActivities
+      ...allReports.map(route => ({ ...route, beforeEnter: authMiddleware })),
+      ...managementDashboard.map(route => ({ ...route, beforeEnter: authMiddleware })),
+      ...hrCommittee.map(route => ({ ...route, beforeEnter: authMiddleware })),
+      ...sbReports.map(route => ({ ...route, beforeEnter: authMiddleware })),
+      ...groupWideActivities.map(route => ({ ...route, beforeEnter: authMiddleware }))
     ],
   },
   {
@@ -84,22 +101,7 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
 
-  let hrEmail = localStorage.hrEmail
-  if (hrEmail && !userService.isAuthenticated()) {
-    userService.pullUserRole(localStorage.hrEmail);
-  } else if (
-    !userService.isAuthenticated()
-  )
-    next({ name: "signIn" });
-  //Yetkilere göre router ayarı
-  if (
-    to.meta.acceptedRoles.includes(userService.userRole()) ||
-    to.meta.acceptedRoles == "ALL"
-  ) {
-    next();
-  } else {
-    next({ name: "404 Error" });
-  }
+  next();
 })
 
-export default router
+export default router;
