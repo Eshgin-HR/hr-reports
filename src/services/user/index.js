@@ -1,15 +1,22 @@
 import store from "@/store"
+import {verifyToken, getToken, getRole, removeToken} from '../tokenService/TokenService';
 
 export const userService = {
-  pullUserRole: (val) => {
-    store.dispatch("user/updateUserRole", val)
+  pullUserRole: () => {
+    let role = getRole();
+    store.dispatch("user/updateUserRole", role)
   },
   userRole: () => {
-    return store.state.user.userRole
+    return getRole();
   },
-  isAuthenticated: () => {
-    let isAuthenticated = true
-    !store.state.user.userRole ? (isAuthenticated = false) : null
-    return isAuthenticated
+  isAuthenticated: async () => {
+    let token = getToken();
+    if (token) {
+      let isValid = await verifyToken(token);
+      if (!isValid)
+        removeToken();
+      return true;
+    }
+    return false;
   },
 }

@@ -24,18 +24,23 @@
 
 <script>
 import card from "@/common/components/boxes/card.vue";
-import { hrCommittee } from "@/common/helpers/reports";
+import { db } from "@/common/helpers/reports";
 import { TrToEn } from "@/common/helpers/user";
+import { getRole } from "@/services/tokenService/TokenService";
 
 export default {
   data() {
     return {
-      hrCommittee,
+      hrCommittee: [],
       TrToEn
     }
   },
   components: {
     card,
+  },
+  mounted() {
+    const reports = db[getRole()];
+    this.hrCommittee = reports.filter((a) => a['badgeName'] === "HR Committee");
   },
   computed: {
     hrCommitteeFunc() {

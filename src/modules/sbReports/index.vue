@@ -24,18 +24,23 @@
 
 <script>
 import card from "@/common/components/boxes/card.vue";
-import { sbReports } from "@/common/helpers/reports";
+import { db } from "@/common/helpers/reports";
 import { TrToEn } from "@/common/helpers/user";
+import { getRole } from "@/services/tokenService/TokenService";
 
 export default {
   data() {
     return {
-      sbReports,
+      sbReports: [],
       TrToEn
     }
   },
   components: {
     card,
+  },
+  mounted() {
+    const reports = db[getRole()];
+    this.sbReports = reports.filter((a) => a['badgeName'] === "SB Report");
   },
   computed: {
     sbReportsFunc() {

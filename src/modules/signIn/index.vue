@@ -53,6 +53,7 @@ import loginButton from "@/common/components/buttons/loginButton.vue";
 import textInput from "@/common/components/form/textInput.vue";
 import { accounts } from "@/common/helpers/user";
 import messageBox from "@/common/components/form/messageBox.vue";
+import { generateToken, saveToken } from "@/services/tokenService/TokenService";
 
 export default {
   data() {
@@ -99,22 +100,36 @@ export default {
         };
       }
     },
-    loginFunc() {
-      let containsEmail = false
-      accounts.forEach(acc => {
-        if (acc.email == this.email && String(acc.password) == String(this.password)) {
-          containsEmail = true
-          return
+    async loginFunc() {
+      this.buttonLoading = true;
+      try {
+        const user = accounts.find(acc => 
+          acc.email === this.email && String(acc.password) === String(this.password)
+        );
+
+        if (user) {
+          console.log('User found:', {
+            email: user.email,
+            password: user.password,
+            role: user.role
+          });
+
+          const token = await generateToken(user.email, user.role);
+          saveToken(token);
+          this.$router.push({ name: "allReports" });
+          this.messageBoxType = "";
+          this.messageBoxText = "";
+        } else {
+          console.log('No user found');
+          this.messageBoxType = "error";
+          this.messageBoxText = "Email or password is incorrect";
         }
-      })
-      if (containsEmail) {
-        localStorage.setItem("hrEmail", this.email)
-        this.$router.push({ name: "allReports" });
-        this.messageBoxType = ""
-        this.messageBoxText = ""
-      } else {
-        this.messageBoxType = "error"
-        this.messageBoxText = "Email or password is incorrect"
+      } catch (error) {
+        console.error("Login error:", error);
+        this.messageBoxType = "error";
+        this.messageBoxText = "An error occurred during login. Please try again.";
+      } finally {
+        this.buttonLoading = false;
       }
     },
   },

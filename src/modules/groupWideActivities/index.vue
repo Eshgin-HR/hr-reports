@@ -24,18 +24,23 @@
 
 <script>
 import card from "@/common/components/boxes/card.vue";
-import { groupWideActivities } from "@/common/helpers/reports";
+import { db } from "@/common/helpers/reports";
 import { TrToEn } from "@/common/helpers/user";
+import { getRole } from "@/services/tokenService/TokenService";
 
 export default {
   data() {
     return {
-      groupWideActivities,
+      groupWideActivities: [],
       TrToEn
     }
   },
   components: {
     card,
+  },
+  mounted() {
+    const reports = db[getRole()];
+    this.groupWideActivities = reports.filter((a) => a['badgeName'] === "Group wide activities");
   },
   computed: {
     groupWideActivitiesFunc() {

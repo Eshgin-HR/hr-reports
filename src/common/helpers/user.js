@@ -1,48 +1,48 @@
 const accounts = [
   {
     email: "jgasimov@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "smammadov@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "dsadullayev@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "rallahverdiyev@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "fmammadov@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "aboon@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "jismayilov@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "aabbasli@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
   {
     email: "ejafarov@pasha-holding.az",
-    password: "123",
-    role: "ALL",
+    password: "GroupHR123",
+    role: "admin"
   },
 ];
 

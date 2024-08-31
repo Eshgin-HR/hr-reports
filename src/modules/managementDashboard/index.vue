@@ -24,18 +24,23 @@
 
 <script>
 import card from "@/common/components/boxes/card.vue";
-import { managementDashboard } from "@/common/helpers/reports";
+import { db } from "@/common/helpers/reports";
 import { TrToEn } from "@/common/helpers/user";
+import { getRole } from "@/services/tokenService/TokenService";
 
 export default {
   data() {
     return {
-      managementDashboard,
+      managementDashboard: [],
       TrToEn
     }
   },
   components: {
     card,
+  },
+  mounted() {
+    const reports = db[getRole()];
+    this.managementDashboard = reports.filter((a) => a['badgeName'] === "Management Dashboard");
   },
   computed: {
     managementDashboardFunc() {

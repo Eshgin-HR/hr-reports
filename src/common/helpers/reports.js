@@ -126,9 +126,22 @@ const groupWideActivities = [
   },
 ];
 
+const db = {
+  "admin": [
+    ...managementDashboard,
+    ...hrCommittee,
+    ...sbReports,
+    ...groupWideActivities
+  ],
+  "hr": [
+    ...hrCommittee
+  ],
+};
+
 export {
   managementDashboard,
   hrCommittee,
   sbReports,
-  groupWideActivities
+  groupWideActivities,
+  db
 };
