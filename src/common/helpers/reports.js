@@ -1,3 +1,5 @@
+import ROLES from "./roles";
+
 // "Management Dashboard" sehifesinin raporlari
 const managementDashboard = [
   {
@@ -5,7 +7,7 @@ const managementDashboard = [
     badgeName: "Management Dashboard",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasa-holding.png"),
-    role: "ALL",
+    roles: [],
   },
 ];
 
@@ -16,42 +18,42 @@ const hrCommittee = [
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/1b1e23uo60?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-bank.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Kapital Bank",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/kapital-bank.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "PASHA Life",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/WfGm7VO__4?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-life.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "PASHA Insurance",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/s62Y7mUGzp?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-insurance.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Pasha Bank Georgia",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-bank.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "PASHA Bank Turkey",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-bank.png"),
-    role: "ALL",
+    roles: [],
   },
 ];
 
@@ -62,78 +64,78 @@ const sbReports = [
     badgeName: "SB Report",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-bank.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "PASHA Life",
     badgeName: "SB Report",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-life.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "PASHA Insurance",
     badgeName: "SB Report",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-insurance.png"),
-    role: "ALL",
+    roles: [],
   },
 ];
 
-// "Group wide activities" sehifesinin raporlari
+
 const groupWideActivities = [
   {
     companyName: "Group Mobility Report",
     badgeName: "Group wide activities",
     link: "https://app.powerbi.com/links/8XheDFf1cV?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: null,
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Loyalty program - Deyerlisen",
     badgeName: "Group wide activities",
     link: "https://app.powerbi.com/links/KN569gAxlf?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: null,
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Exit Survey - PASHA Bank",
     badgeName: "Group wide activities",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-bank.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Exit Survey - PASHA Life",
     badgeName: "Group wide activities",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-life.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Exit Survey - PASHA Insurance",
     badgeName: "Group wide activities",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/pasha-insurance.png"),
-    role: "ALL",
+    roles: [],
   },
   {
     companyName: "Exit Survey - Kapital Bank",
     badgeName: "Group wide activities",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: require("@/assets/images/reports/kapital-bank.png"),
-    role: "ALL",
+    roles: [],
   },
 ];
 
 const db = {
-  "admin": [
+  [ROLES.ADMIN]: [
     ...managementDashboard,
     ...hrCommittee,
     ...sbReports,
     ...groupWideActivities
   ],
-  "hr": [
+  [ROLES.HR]: [
     ...hrCommittee
   ],
 };
