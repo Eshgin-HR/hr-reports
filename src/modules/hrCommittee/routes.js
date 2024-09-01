@@ -1,5 +1,7 @@
-const hrCommitteeComp = () =>
-  import(/* webpackChunkName: "hrCommittee" */ "./index");
+import { defineAsyncComponent } from 'vue'
+
+const hrCommitteeComp = defineAsyncComponent(() => import('./index.vue'))
+
 
 export const hrCommittee = [
   {

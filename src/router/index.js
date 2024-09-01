@@ -78,7 +78,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: '/',
   routes,
   scrollBehavior(to, from) {
     if (to.name != from.name) return { x: 0, y: 0 };
@@ -86,7 +86,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  let documentTitle = `${process.env.VUE_APP_TITLE}`;
+  let documentTitle = `HR REPORT`;
   if (to.meta.title) {
     documentTitle = `${to.meta.title}`;
   }

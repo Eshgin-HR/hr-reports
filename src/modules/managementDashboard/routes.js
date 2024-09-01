@@ -1,5 +1,7 @@
-const managementDashboardComp = () =>
-  import(/* webpackChunkName: "managementDashboard" */ "./index");
+import { defineAsyncComponent } from 'vue'
+
+const managementDashboardComp = defineAsyncComponent(() => import('./index.vue'))
+
 
 export const managementDashboard = [
   {

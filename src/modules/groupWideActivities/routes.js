@@ -1,5 +1,6 @@
-const groupWideActivitiesComp = () =>
-  import(/* webpackChunkName: "groupWideActivities" */ "./index");
+import { defineAsyncComponent } from 'vue'
+
+const groupWideActivitiesComp = defineAsyncComponent(() => import('./index.vue'))
 
 export const groupWideActivities = [
   {

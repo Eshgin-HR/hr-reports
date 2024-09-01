@@ -1,5 +1,6 @@
-const allReportsComp = () =>
-  import(/* webpackChunkName: "allReports" */ "./index");
+import { defineAsyncComponent } from 'vue'
+
+const allReportsComp = defineAsyncComponent(() => import('./index.vue'))
 
 export const allReports = [
   {
