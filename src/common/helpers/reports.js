@@ -19,7 +19,7 @@ const managementDashboard = [
 // "HR Committee" sehifesinin raporlari
 const hrCommittee = [
   {
-    companyName: "Pasha Bank",
+    companyName: "PASHA Bank",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/1b1e23uo60?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: pashaBankIcon,
@@ -47,7 +47,7 @@ const hrCommittee = [
     roles: [],
   },
   {
-    companyName: "Pasha Bank Georgia",
+    companyName: "PASHA Bank Georgia",
     badgeName: "HR Committee",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: pashaBankIcon,
@@ -65,7 +65,7 @@ const hrCommittee = [
 // "SB Reports" sehifesinin raporlari
 const sbReports = [
   {
-    companyName: "Pasha Bank",
+    companyName: "PASHA Bank",
     badgeName: "SB Report",
     link: "https://app.powerbi.com/links/EhgXbesice?ctid=de2ad714-c56e-4a86-8d9b-85198dba6c23&pbi_source=linkShare",
     logo: pashaBankIcon,
