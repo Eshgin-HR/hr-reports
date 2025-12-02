@@ -86,6 +86,10 @@ export default {
           route: "groupWideActivities",
           name: "Group wide activities",
         },
+        {
+          route: "expenseManagement",
+          name: "Expense Management",
+        },
       ],
       searchVal: "",
     };

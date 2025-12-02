@@ -9,6 +9,7 @@ import { managementDashboard } from '@/modules/managementDashboard/routes';
 import { hrCommittee } from '@/modules/hrCommittee/routes';
 import { sbReports } from '@/modules/sbReports/routes';
 import { groupWideActivities } from '@/modules/groupWideActivities/routes';
+import { expenseManagement } from '@/modules/expenseManagement/routes';
 
 Vue.use(VueRouter)
 
@@ -58,7 +59,8 @@ const routes = [
       ...managementDashboard.map(route => ({ ...route, beforeEnter: authMiddleware })),
       ...hrCommittee.map(route => ({ ...route, beforeEnter: authMiddleware })),
       ...sbReports.map(route => ({ ...route, beforeEnter: authMiddleware })),
-      ...groupWideActivities.map(route => ({ ...route, beforeEnter: authMiddleware }))
+      ...groupWideActivities.map(route => ({ ...route, beforeEnter: authMiddleware })),
+      ...expenseManagement.map(route => ({ ...route, beforeEnter: authMiddleware }))
     ],
   },
   {
